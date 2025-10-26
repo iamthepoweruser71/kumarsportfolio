@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 // Initialize EmailJS (placeholders)
-emailjs.init('YOUR_EMAILJS_USER_ID');
+emailjs.init('BV8zhZFGyQySbR4lg');
 
 const EMAILJS_SERVICE_ID = 'service_6wu4u5i';
 const EMAILJS_TEMPLATE_ID = 'template_zqaxpgb';
@@ -105,4 +105,5 @@ async function sendEmail() {
 
 });
 });
+
 
