@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Initialize EmailJS (placeholders)
 emailjs.init('YOUR_EMAILJS_USER_ID');
 
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_SERVICE_ID = 'service_6wu4u5i';
+const EMAILJS_TEMPLATE_ID = 'template_zqaxpgb';
 
 // Counter animation
 const counters = document.querySelectorAll('.count');
@@ -105,3 +105,4 @@ async function sendEmail() {
 
 });
 });
+
