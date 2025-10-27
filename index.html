@@ -115,23 +115,30 @@
       <p>LinkedIn: <a href="https://www.linkedin.com/in/kumar-28a59b2ba/" target="_blank">View Profile</a></p>
     </div>
     <form id="contact-form">
-      <label for="name">Name</label>
-      <input id="name" name="name" required />
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required />
-      <label for="phone">Phone</label>
-      <input id="phone" name="phone" type="tel" />
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
-      <label for="attachment">Attachment (max 5MB, .jpeg, .pdf, .docx)</label>
-      <input id="attachment" name="attachment" type="file" accept=".jpeg,.pdf,.docx" />
-      <label>
-        <input type="checkbox" id="consent" required />
-        I consent to my data being stored and processed under GDPR guidelines.
-      </label>
-      <button type="submit">Send Message</button>
-      <p id="form-status" role="alert"></p>
-    </form>
+  <label for="name">Name</label>
+  <input id="name" name="name" type="text" placeholder="Your Name" required />
+
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+  <label for="phone">Phone</label>
+  <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" />
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+
+  <label for="attachment">Attachment (max 5MB, .jpeg, .pdf, .docx)</label>
+  <input id="attachment" name="attachment" type="file" accept=".jpeg,.pdf,.docx" />
+
+  <label>
+    <input type="checkbox" id="consent" required />
+    I consent to my data being stored and processed under GDPR guidelines.
+  </label>
+
+  <button type="submit">Send Message</button>
+  <p id="form-status" role="alert"></p>
+</form>
+
   </div>
 </section>
 ```
@@ -151,6 +158,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
