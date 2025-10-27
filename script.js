@@ -37,31 +37,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // === Contact Form ===
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
+ // === CONTACT FORM ===
+const form = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    // GDPR consent check
-    const consentBox = document.getElementById('consent');
-    if (consentBox && !consentBox.checked) {
-      status.textContent = 'Please accept data consent to continue.';
-      return;
+  // GDPR Consent Check
+  const consentBox = document.getElementById('consent');
+  if (consentBox && !consentBox.checked) {
+    status.textContent = 'Please accept data consent to continue.';
+    status.style.color = 'red';
+    return;
+  }
+
+  status.textContent = 'Sending...';
+  status.style.color = '#333';
+
+  const formData = new FormData(form);
+  const file = formData.get('attachment');
+
+  const params = {
+    from_name: formData.get('name'),
+    from_email: formData.get('email'),
+    from_phone: formData.get('phone'),
+    message_html: formData.get('message')
+  };
+
+  const sendNow = async () => {
+    try {
+      const result = await emailjs.send(
+        'service_6wu4u5i', // ✅ Your service ID
+        'template_zqaxpgb', // ✅ Your template ID
+        params
+      );
+      console.log('✅ EmailJS result:', result);
+      status.textContent = 'Message sent successfully!';
+      status.style.color = 'green';
+      form.reset();
+    } catch (error) {
+      console.error('❌ EmailJS error:', error);
+      status.textContent = 'Error sending message. Please try again.';
+      status.style.color = 'red';
     }
+  };
 
-    status.textContent = 'Sending...';
-
-    const formData = new FormData(form);
-    const file = formData.get('attachment');
-
-    const params = {
-      from_name: formData.get('name'),
-      from_email: formData.get('email'),
-      from_phone: formData.get('phone'),
-      message_html: formData.get('message'),
+  // Handle attachment (optional, up to 5 MB)
+  if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      params.attachment = reader.result.split(',')[1];
+      await sendNow();
     };
+    reader.readAsDataURL(file);
+  } else {
+    await sendNow();
+  }
+});
 
     // Send function
     const sendNow = async () => {
@@ -135,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 
