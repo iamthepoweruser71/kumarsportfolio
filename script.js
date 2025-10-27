@@ -60,53 +60,58 @@ cookieBanner.style.display = 'none';
 });
 
 // Contact form
+// Contact form
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 
 form.addEventListener('submit', async (e) => {
-e.preventDefault();
-if (!document.getElementById('consent').checked) {
-status.textContent = 'Please accept data consent to continue.';
-return;
-}
-status.textContent = 'Sending...';
+  e.preventDefault();
 
-```
-const formData = new FormData(form);
-const file = formData.get('attachment');
-
-let attachmentBase64 = '';
-if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
-  const reader = new FileReader();
-  reader.onload = async () => {
-    attachmentBase64 = reader.result.split(',')[1];
-    await sendEmail();
-  };
-  reader.readAsDataURL(file);
-} else {
-  await sendEmail();
-}
-
-async function sendEmail() {
-  try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: formData.get('name'),
-      from_email: formData.get('email'),
-      from_phone: formData.get('phone'),
-      message_html: formData.get('message'),
-      attachment: attachmentBase64
-    });
-    status.textContent = 'Message sent successfully!';
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    status.textContent = 'Error sending message. Please try again.';
+  if (!document.getElementById('consent').checked) {
+    status.textContent = 'Please accept data consent to continue.';
+    return;
   }
-}
-```
 
+  status.textContent = 'Sending...';
+
+  const formData = new FormData(form);
+  const file = formData.get('attachment');
+
+  // prepare parameters for EmailJS
+  const params = {
+    from_name: formData.get('name'),
+    from_email: formData.get('email'),
+    from_phone: formData.get('phone'),
+    message_html: formData.get('message'),
+  };
+
+  // attach base64 if any file
+  if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      params.attachment = reader.result.split(',')[1];
+      await sendEmail();
+    };
+    reader.readAsDataURL(file);
+  } else {
+    await sendEmail();
+  }
+
+  async function sendEmail() {
+    try {
+      const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+      console.log('EmailJS result:', result);
+      status.textContent = 'Message sent successfully!';
+      form.reset();
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      status.textContent = 'Error sending message. Please try again.';
+    }
+  }
 });
-});
+
+
+
 
 
 
