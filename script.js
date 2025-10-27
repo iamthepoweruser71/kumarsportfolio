@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
- // === CONTACT FORM ===
+// === CONTACT FORM ===
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 
@@ -67,11 +67,8 @@ form.addEventListener('submit', async (e) => {
 
   const sendNow = async () => {
     try {
-      const result = await emailjs.send(
-        'service_6wu4u5i', // ✅ Your service ID
-        'template_zqaxpgb', // ✅ Your template ID
-        params
-      );
+      console.log("📨 Sending params:", params);
+      const result = await emailjs.send('service_6wu4u5i', 'template_zqaxpgb', params);
       console.log('✅ EmailJS result:', result);
       status.textContent = 'Message sent successfully!';
       status.style.color = 'green';
@@ -95,6 +92,7 @@ form.addEventListener('submit', async (e) => {
     await sendNow();
   }
 });
+
 
   
 
@@ -145,6 +143,7 @@ form.addEventListener('submit', async (e) => {
     });
   });
 });
+
 
 
 
