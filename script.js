@@ -141,6 +141,42 @@ localStorage.setItem('cookiesAccepted', 'true');
       behavior: 'smooth'
     });
   });
+// === BACK TO TOP BUTTON FUNCTIONALITY ===
+const backToTopButton = document.getElementById('back-to-top');
+const heroSection = document.querySelector('.hero');
+const footerSection = document.querySelector('footer');
+
+window.addEventListener('scroll', () => {
+const scrollY = window.scrollY;
+
+```
+// Toggle visibility
+if (scrollY > 300) {
+  backToTopButton.classList.add('show');
+} else {
+  backToTopButton.classList.remove('show');
+}
+
+// Adaptive color (light over dark backgrounds)
+const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+const footerTop = footerSection.offsetTop;
+
+if (scrollY < heroBottom || scrollY > footerTop - window.innerHeight / 2) {
+  backToTopButton.classList.add('light');
+} else {
+  backToTopButton.classList.remove('light');
+}
+```
 
 });
+
+backToTopButton.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+
+});
+
 
