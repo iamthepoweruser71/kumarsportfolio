@@ -111,3 +111,4 @@ form.addEventListener('submit', async (e) => {
     await sendNow();
   }
 });
+});
