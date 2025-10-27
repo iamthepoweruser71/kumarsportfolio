@@ -96,30 +96,7 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-    // Send function
-    const sendNow = async () => {
-      try {
-        const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-        console.log('EmailJS result:', result);
-        status.textContent = 'Message sent successfully!';
-        form.reset();
-      } catch (error) {
-        console.error('EmailJS error:', error);
-        status.textContent = 'Error sending message. Please try again.';
-      }
-    };
-
-    if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
-      const reader = new FileReader();
-      reader.onload = async () => {
-        params.attachment = reader.result.split(',')[1];
-        await sendNow();
-      };
-      reader.readAsDataURL(file);
-    } else {
-      await sendNow();
-    }
-  });
+  
 
   // === Scroll-triggered Fade-in Animations ===
   const faders = document.querySelectorAll('section, .card, .qual-card, .edu-card');
@@ -168,6 +145,7 @@ form.addEventListener('submit', async (e) => {
     });
   });
 });
+
 
 
 
