@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // === Initialize EmailJS ===
-  emailjs.init({
-    publicKey: 'BV8zhZFGyQySbR4lg'
-  });
+  emailjs.init('BV8zhZFGyQySbR4lg');
 
   const EMAILJS_SERVICE_ID = 'service_6wu4u5i';
   const EMAILJS_TEMPLATE_ID = 'template_zqaxpgb';
@@ -143,6 +141,7 @@ form.addEventListener('submit', async (e) => {
     });
   });
 });
+
 
 
 
