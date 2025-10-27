@@ -67,17 +67,19 @@ const status = document.getElementById('form-status');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  if (!document.getElementById('consent').checked) {
+  // GDPR consent
+  const consentBox = document.getElementById('consent');
+  if (consentBox && !consentBox.checked) {
     status.textContent = 'Please accept data consent to continue.';
     return;
   }
 
   status.textContent = 'Sending...';
 
+  // Gather form data
   const formData = new FormData(form);
   const file = formData.get('attachment');
 
-  // prepare parameters for EmailJS
   const params = {
     from_name: formData.get('name'),
     from_email: formData.get('email'),
@@ -85,19 +87,8 @@ form.addEventListener('submit', async (e) => {
     message_html: formData.get('message'),
   };
 
-  // attach base64 if any file
-  if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
-    const reader = new FileReader();
-    reader.onload = async () => {
-      params.attachment = reader.result.split(',')[1];
-      await sendEmail();
-    };
-    reader.readAsDataURL(file);
-  } else {
-    await sendEmail();
-  }
-
-  async function sendEmail() {
+  // Optional attachment (≤ 5 MB)
+  const sendNow = async () => {
     try {
       const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
       console.log('EmailJS result:', result);
@@ -107,12 +98,16 @@ form.addEventListener('submit', async (e) => {
       console.error('EmailJS error:', error);
       status.textContent = 'Error sending message. Please try again.';
     }
+  };
+
+  if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      params.attachment = reader.result.split(',')[1];
+      await sendNow();
+    };
+    reader.readAsDataURL(file);
+  } else {
+    await sendNow();
   }
 });
-
-
-
-
-
-
-
