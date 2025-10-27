@@ -87,7 +87,7 @@ if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
 } else {
   await sendNow();
 }
-```
+
 
 });
 
@@ -129,9 +129,10 @@ const footerSection = document.querySelector('footer');
 window.addEventListener('scroll', () => {
 const scrollY = window.scrollY;
 
-```
+
 // Toggle visibility
 if (scrollY > 300) {
   backToTopButton.classList.add('show');
 } else {
-```
+
+
