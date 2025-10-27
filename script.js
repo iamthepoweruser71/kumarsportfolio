@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       message_html: formData.get('message'),
     };
 
-    // Optional attachment (≤ 5 MB)
+    // Send function
     const sendNow = async () => {
       try {
         const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    // Optional attachment
     if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
       const reader = new FileReader();
       reader.onload = async () => {
@@ -74,5 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       await sendNow();
     }
+  });
+
+  // === Tab Switching for Qualifications ===
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(tc => tc.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
   });
 });
