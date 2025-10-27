@@ -93,11 +93,7 @@ if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
 
 // === Scroll-triggered Fade-in Animations ===
 const faders = document.querySelectorAll('section, .card, .qual-card, .edu-card');
-
-const appearOptions = {
-threshold: 0.15,
-rootMargin: "0px 0px -50px 0px"
-};
+const appearOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
 
 const appearOnScroll = new IntersectionObserver((entries, observer) => {
 entries.forEach(entry => {
@@ -124,23 +120,7 @@ acceptCookies.addEventListener('click', () => {
 cookieBanner.style.display = 'none';
 localStorage.setItem('cookiesAccepted', 'true');
 });
-    // === Back to Top Button ===
-  const backToTopButton = document.getElementById('back-to-top');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTopButton.classList.add('show');
-    } else {
-      backToTopButton.classList.remove('show');
-    }
-  });
-
-  backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 // === BACK TO TOP BUTTON FUNCTIONALITY ===
 const backToTopButton = document.getElementById('back-to-top');
 const heroSection = document.querySelector('.hero');
@@ -154,29 +134,4 @@ const scrollY = window.scrollY;
 if (scrollY > 300) {
   backToTopButton.classList.add('show');
 } else {
-  backToTopButton.classList.remove('show');
-}
-
-// Adaptive color (light over dark backgrounds)
-const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-const footerTop = footerSection.offsetTop;
-
-if (scrollY < heroBottom || scrollY > footerTop - window.innerHeight / 2) {
-  backToTopButton.classList.add('light');
-} else {
-  backToTopButton.classList.remove('light');
-}
 ```
-
-});
-
-backToTopButton.addEventListener('click', () => {
-window.scrollTo({
-top: 0,
-behavior: 'smooth'
-});
-});
-
-});
-
-
