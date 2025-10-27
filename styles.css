@@ -32,59 +32,7 @@ a:hover {
   color: var(--accent-light);
 }
 
-body {
-font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-color: #222;
-line-height: 1.6;
-background-color: #fafafa;
-}
 
-header.hero {
-display: flex;
-flex-wrap: wrap;
-padding: 2rem;
-background: linear-gradient(135deg, #003366, #0055a4);
-color: #fff;
-align-items: center;
-}
-
-.hero-left {
-flex: 1 1 60%;
-}
-
-.hero-left h1 {
-font-size: 2.5rem;
-}
-
-.hero-left h2 {
-font-weight: 400;
-margin-bottom: 1rem;
-}
-
-.value-prop {
-font-size: 1.2rem;
-margin-bottom: 1rem;
-}
-
-.metrics {
-display: flex;
-gap: 1.5rem;
-}
-
-.metrics div {
-text-align: center;
-}
-
-.count {
-display: block;
-font-size: 2rem;
-font-weight: bold;
-}
-
-.hero-right {
-flex: 1 1 40%;
-text-align: center;
-}
 
 nav {
 background-color: #004080;
@@ -227,4 +175,5 @@ header.hero { flex-direction: column; }
 }
 
 /* …(rest of the hero CSS from Step 3)… */
+
 
