@@ -175,5 +175,116 @@ header.hero { flex-direction: column; }
 }
 
 /* …(rest of the hero CSS from Step 3)… */
+/* === CERTIFICATIONS SECTION === */
+
+#qualifications {
+  text-align: center;
+  padding: 4rem 8%;
+}
+
+#qualifications h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.qual-intro {
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+}
+
+.qual-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  border: 1px solid var(--accent-light);
+  background: #fff;
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.tab:hover {
+  background: var(--accent-light);
+  color: #fff;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.qual-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 700px;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.qual-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.qual-card h3 {
+  font-size: 1.3rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.qual-card ul {
+  margin-top: 1rem;
+  padding-left: 1rem;
+}
+
+.qual-card li {
+  margin-bottom: 0.5rem;
+  color: #333;
+  list-style: disc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+  // === Tab Switching for Qualifications ===
+const tabs = document.querySelectorAll('.tab');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tabContents.forEach(tc => tc.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+}
+
 
 
