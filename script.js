@@ -35,64 +35,61 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-// === CONTACT FORM ===
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
+  // === CONTACT FORM ===
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  // GDPR Consent Check
-  const consentBox = document.getElementById('consent');
-  if (consentBox && !consentBox.checked) {
-    status.textContent = 'Please accept data consent to continue.';
-    status.style.color = 'red';
-    return;
-  }
-
-  status.textContent = 'Sending...';
-  status.style.color = '#333';
-
-  const formData = new FormData(form);
-  const file = formData.get('attachment');
-
-  const params = {
-    from_name: formData.get('name'),
-    from_email: formData.get('email'),
-    from_phone: formData.get('phone'),
-    message_html: formData.get('message')
-  };
-
-  const sendNow = async () => {
-    try {
-      console.log("📨 Sending params:", params);
-      const result = await emailjs.send('service_6wu4u5i', 'template_zqaxpgb', params);
-      console.log('✅ EmailJS result:', result);
-      status.textContent = 'Message sent successfully!';
-      status.style.color = 'green';
-      form.reset();
-    } catch (error) {
-      console.error('❌ EmailJS error:', error);
-      status.textContent = 'Error sending message. Please try again.';
+    // GDPR Consent Check
+    const consentBox = document.getElementById('consent');
+    if (consentBox && !consentBox.checked) {
+      status.textContent = 'Please accept data consent to continue.';
       status.style.color = 'red';
+      return;
     }
-  };
 
-  // Handle attachment (optional, up to 5 MB)
-  if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
-    const reader = new FileReader();
-    reader.onload = async () => {
-      params.attachment = reader.result.split(',')[1];
-      await sendNow();
+    status.textContent = 'Sending...';
+    status.style.color = '#333';
+
+    const formData = new FormData(form);
+    const file = formData.get('attachment');
+
+    const params = {
+      from_name: formData.get('name'),
+      from_email: formData.get('email'),
+      from_phone: formData.get('phone'),
+      message_html: formData.get('message')
     };
-    reader.readAsDataURL(file);
-  } else {
-    await sendNow();
-  }
-});
 
+    const sendNow = async () => {
+      try {
+        console.log("📨 Sending params:", params);
+        const result = await emailjs.send('service_6wu4u5i', 'template_zqaxpgb', params);
+        console.log('✅ EmailJS result:', result);
+        status.textContent = 'Message sent successfully!';
+        status.style.color = 'green';
+        form.reset();
+      } catch (error) {
+        console.error('❌ EmailJS error:', error);
+        status.textContent = 'Error sending message. Please try again.';
+        status.style.color = 'red';
+      }
+    };
 
-  
+    // Handle attachment (optional, up to 5 MB)
+    if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
+      const reader = new FileReader();
+      reader.onload = async () => {
+        params.attachment = reader.result.split(',')[1];
+        await sendNow();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      await sendNow();
+    }
+  });
 
   // === Scroll-triggered Fade-in Animations ===
   const faders = document.querySelectorAll('section, .card, .qual-card, .edu-card');
@@ -142,10 +139,77 @@ form.addEventListener('submit', async (e) => {
   });
 });
 
+// ---------- HERO: chart + visibility-triggered counters + parallax ----------
+(function initHeroDashboard() {
+  const ctx = document.getElementById('careerChart');
+  let careerChart = null;
 
+  function createCareerChart() {
+    if (!ctx) return;
+    careerChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['2006', '2010', '2014', '2018', '2021', '2025'],
+        datasets: [{
+          label: 'Career Progression',
+          data: [10, 40, 80, 130, 180, 230],
+          borderColor: '#00AEEF',
+          backgroundColor: 'rgba(0,174,239,0.15)',
+          borderWidth: 3,
+          pointRadius: 4,
+          tension: 0.35,
+          fill: true
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { x: { display: false }, y: { display: false } },
+        animation: { duration: 2000, easing: 'easeOutQuart' }
+      }
+    });
+  }
 
+  // Animate counters when hero becomes visible
+  const heroCounters = document.querySelectorAll('.hero .count');
+  let hasAnimated = false;
 
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        heroCounters.forEach(el => {
+          const target = +el.dataset.target;
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 100));
+          const tick = () => {
+            current += step;
+            if (current < target) {
+              el.textContent = current;
+              requestAnimationFrame(tick);
+            } else {
+              el.textContent = target;
+            }
+          };
+          tick();
+        });
 
+        createCareerChart();
+        hasAnimated = true;
+      }
+    });
+  }, { threshold: 0.3 });
 
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) heroObserver.observe(heroSection);
 
-
+  // Subtle parallax effect on chart
+  const heroRight = document.querySelector('.hero-right');
+  if (heroRight && heroSection) {
+    window.addEventListener('scroll', () => {
+      const rect = heroSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const scrollRatio = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+        heroRight.style.transform = `translateY(${scrollRatio * 20}px)`;
+      }
+    }, { passive: true });
+  }
+})();
