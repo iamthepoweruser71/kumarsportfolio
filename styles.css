@@ -175,3 +175,84 @@ transition: opacity 0.6s ease, transform 0.6s ease;
 opacity: 1;
 transform: translateY(0);
 }
+/* === HEADER & NAVIGATION === */
+#main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--neutral);
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+  transition: top 0.4s ease;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.8rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.3rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav a {
+  color: var(--primary);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* === Responsive Navigation === */
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: var(--neutral);
+    position: absolute;
+    top: 60px;
+    right: 5%;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  nav ul.open {
+    display: flex;
+  }
+
+  #menu-toggle {
+    display: block;
+  }
+}
+
+/* === Auto-hide animation === */
+.header-hidden {
+  top: -80px;
+}
+
