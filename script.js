@@ -213,3 +213,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 })();
+// === AUTO-HIDE NAVIGATION ===
+let lastScrollTop = 0;
+const header = document.getElementById('main-header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop && currentScroll > 100) {
+    // Scroll down → hide
+    header.classList.add('header-hidden');
+  } else {
+    // Scroll up → show
+    header.classList.remove('header-hidden');
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+// === MOBILE MENU TOGGLE ===
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
