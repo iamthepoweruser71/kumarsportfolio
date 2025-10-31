@@ -230,6 +230,15 @@ window.addEventListener('scroll', () => {
 
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
+// === ACTIVE NAV LINK ON CLICK ===
+const navLinksList = document.querySelectorAll('.nav-links a');
+
+navLinksList.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinksList.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
 
 // === MOBILE MENU TOGGLE ===
 const menuToggle = document.getElementById('menu-toggle');
@@ -238,4 +247,5 @@ const navLinks = document.querySelector('.nav-links');
 menuToggle.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
+
 
