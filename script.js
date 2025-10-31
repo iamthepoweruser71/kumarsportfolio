@@ -1,9 +1,9 @@
-/* === PORTFOLIO SCRIPT.JS — FINAL FULL VERSION === */
+/* === PORTFOLIO WEBSITE SCRIPT — FINAL CONSOLIDATED VERSION === */
+
 document.addEventListener('DOMContentLoaded', () => {
 
 /* === 1️⃣ Initialize EmailJS === */
-emailjs.init('BV8zhZFGyQySbR4lg'); // Replace with your own public key
-
+emailjs.init('BV8zhZFGyQySbR4lg'); // Replace with your EmailJS public key
 const EMAILJS_SERVICE_ID = 'service_6wu4u5i';
 const EMAILJS_TEMPLATE_ID = 'template_zqaxpgb';
 
@@ -64,7 +64,7 @@ e.preventDefault();
 
 }
 
-/* === 3️⃣ HEADER BEHAVIOR === */
+/* === 3️⃣ HEADER BEHAVIOR (AUTO-HIDE + TRANSPARENT SCROLL) === */
 const header = document.getElementById('main-header');
 let lastScrollTop = 0;
 
@@ -72,16 +72,14 @@ window.addEventListener('scroll', () => {
 const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
 ```
-// Slight transparency + dynamic shadow
+// Transparent effect on scroll
 if (currentScroll > 50) {
   header.classList.add('scrolled');
-  header.style.boxShadow = `0 4px ${Math.min(16, currentScroll / 15)}px rgba(0,0,0,0.15)`;
 } else {
   header.classList.remove('scrolled');
-  header.style.boxShadow = '0 2px 6px rgba(0,0,0,0.08)';
 }
 
-// Auto-hide on scroll down
+// Auto-hide header when scrolling down
 if (currentScroll > lastScrollTop && currentScroll > 120) {
   header.classList.add('header-hidden');
 } else {
@@ -93,41 +91,16 @@ lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 
 });
 
-/* === 4️⃣ SMOOTH SCROLL TO SECTIONS === */
+/* === 4️⃣ ACTIVE LINK BEHAVIOR === */
 const navLinks = document.querySelectorAll('.nav-links a');
 navLinks.forEach(link => {
-link.addEventListener('click', (e) => {
-const targetId = link.getAttribute('href');
-if (targetId && targetId.startsWith('#')) {
-e.preventDefault();
-document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-});
-});
-
-/* === 5️⃣ ACTIVE LINK HIGHLIGHT (CLICK + SCROLL SPY) === */
-function setActiveLink(link) {
+link.addEventListener('click', () => {
 navLinks.forEach(l => l.classList.remove('active'));
-if (link) link.classList.add('active');
-}
-
-navLinks.forEach(link => {
-link.addEventListener('click', () => setActiveLink(link));
+link.classList.add('active');
+});
 });
 
-const sections = document.querySelectorAll('section[id]');
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-const activeLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-setActiveLink(activeLink);
-}
-});
-}, { threshold: 0.4 });
-
-sections.forEach(section => observer.observe(section));
-
-/* === 6️⃣ MOBILE MENU TOGGLE === */
+/* === 5️⃣ MOBILE MENU TOGGLE === */
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.querySelector('.nav-links');
 
@@ -143,18 +116,11 @@ navLinks.forEach(link => {
     navMenu.classList.remove('open');
   });
 });
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-    navMenu.classList.remove('open');
-  }
-});
 ```
 
 }
 
-/* === 7️⃣ SCROLL ANIMATIONS === */
+/* === 6️⃣ SCROLL ANIMATIONS (Fade-in) === */
 const faders = document.querySelectorAll('section, .card, .qual-card, .edu-card');
 const appearOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
 
@@ -171,7 +137,7 @@ fader.classList.add('fade-in');
 appearOnScroll.observe(fader);
 });
 
-/* === 8️⃣ BACK TO TOP BUTTON === */
+/* === 7️⃣ BACK TO TOP BUTTON === */
 const backToTopButton = document.getElementById('back-to-top');
 if (backToTopButton) {
 window.addEventListener('scroll', () => {
@@ -190,7 +156,7 @@ backToTopButton.addEventListener('click', () => {
 
 }
 
-/* === 9️⃣ COOKIE CONSENT === */
+/* === 8️⃣ COOKIE CONSENT === */
 const cookieBanner = document.getElementById('cookie-banner');
 const acceptCookies = document.getElementById('accept-cookies');
 if (cookieBanner && acceptCookies) {
