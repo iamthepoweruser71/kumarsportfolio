@@ -1,70 +1,5 @@
-/* === PORTFOLIO WEBSITE SCRIPT — FINAL CONSOLIDATED VERSION === */
-
 document.addEventListener('DOMContentLoaded', () => {
-
-/* === 1️⃣ Initialize EmailJS === */
-emailjs.init('BV8zhZFGyQySbR4lg'); // Replace with your EmailJS public key
-const EMAILJS_SERVICE_ID = 'service_6wu4u5i';
-const EMAILJS_TEMPLATE_ID = 'template_zqaxpgb';
-
-/* === 2️⃣ CONTACT FORM HANDLER === */
-const form = document.getElementById('contact-form');
-const status = document.getElementById('form-status');
-
-if (form) {
-form.addEventListener('submit', async (e) => {
-e.preventDefault();
-
-```
-  const consentBox = document.getElementById('consent');
-  if (consentBox && !consentBox.checked) {
-    status.textContent = 'Please accept data consent to continue.';
-    status.style.color = 'red';
-    return;
-  }
-
-  status.textContent = 'Sending...';
-  status.style.color = '#333';
-
-  const formData = new FormData(form);
-  const params = {
-    from_name: formData.get('name'),
-    from_email: formData.get('email'),
-    from_phone: formData.get('phone'),
-    message_html: formData.get('message'),
-  };
-
-  const file = formData.get('attachment');
-  const sendNow = async () => {
-    try {
-      const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-      console.log('✅ Email sent:', result);
-      status.textContent = 'Message sent successfully!';
-      status.style.color = 'green';
-      form.reset();
-    } catch (error) {
-      console.error('❌ EmailJS error:', error);
-      status.textContent = 'Error sending message. Please try again.';
-      status.style.color = 'red';
-    }
-  };
-
-  if (file && file.size > 0 && file.size <= 5 * 1024 * 1024) {
-    const reader = new FileReader();
-    reader.onload = async () => {
-      params.attachment = reader.result.split(',')[1];
-      await sendNow();
-    };
-    reader.readAsDataURL(file);
-  } else {
-    await sendNow();
-  }
-});
-```
-
-}
-
-/* === 3️⃣ HEADER BEHAVIOR (AUTO-HIDE + TRANSPARENT SCROLL) === */
+// === HEADER AUTO-HIDE + SCROLL EFFECT ===
 const header = document.getElementById('main-header');
 let lastScrollTop = 0;
 
@@ -72,26 +7,19 @@ window.addEventListener('scroll', () => {
 const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
 ```
-// Transparent effect on scroll
-if (currentScroll > 50) {
-  header.classList.add('scrolled');
-} else {
-  header.classList.remove('scrolled');
-}
+if (currentScroll > 50) header.classList.add('scrolled');
+else header.classList.remove('scrolled');
 
-// Auto-hide header when scrolling down
-if (currentScroll > lastScrollTop && currentScroll > 120) {
+if (currentScroll > lastScrollTop && currentScroll > 120)
   header.classList.add('header-hidden');
-} else {
-  header.classList.remove('header-hidden');
-}
+else header.classList.remove('header-hidden');
 
 lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 ```
 
 });
 
-/* === 4️⃣ ACTIVE LINK BEHAVIOR === */
+// === ACTIVE LINK ON CLICK ===
 const navLinks = document.querySelectorAll('.nav-links a');
 navLinks.forEach(link => {
 link.addEventListener('click', () => {
@@ -100,30 +28,46 @@ link.classList.add('active');
 });
 });
 
-/* === 5️⃣ MOBILE MENU TOGGLE === */
+// === MOBILE MENU TOGGLE ===
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.querySelector('.nav-links');
-
 if (menuToggle && navMenu) {
 menuToggle.addEventListener('click', () => {
 navMenu.classList.toggle('open');
 });
-
-```
-// Close menu when clicking a link
 navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navMenu.classList.remove('open');
-  });
+link.addEventListener('click', () => navMenu.classList.remove('open'));
 });
-```
-
 }
 
-/* === 6️⃣ SCROLL ANIMATIONS (Fade-in) === */
-const faders = document.querySelectorAll('section, .card, .qual-card, .edu-card');
-const appearOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+// === SCROLLSPY FUNCTIONALITY ===
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+let scrollPos = window.scrollY + 150;
+sections.forEach(section => {
+if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href').substring(1) === section.id) link.classList.add('active');
+});
+}
+});
+});
 
+// === BACK TO TOP BUTTON ===
+const backToTop = document.getElementById('back-to-top');
+if (backToTop) {
+window.addEventListener('scroll', () => {
+backToTop.classList.toggle('show', window.scrollY > 300);
+});
+backToTop.addEventListener('click', () => {
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+}
+
+// === SCROLL ANIMATIONS ===
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
 const appearOnScroll = new IntersectionObserver((entries, observer) => {
 entries.forEach(entry => {
 if (!entry.isIntersecting) return;
@@ -132,44 +76,5 @@ observer.unobserve(entry.target);
 });
 }, appearOptions);
 
-faders.forEach(fader => {
-fader.classList.add('fade-in');
-appearOnScroll.observe(fader);
-});
-
-/* === 7️⃣ BACK TO TOP BUTTON === */
-const backToTopButton = document.getElementById('back-to-top');
-if (backToTopButton) {
-window.addEventListener('scroll', () => {
-if (window.scrollY > 300) {
-backToTopButton.classList.add('show');
-} else {
-backToTopButton.classList.remove('show');
-}
-});
-
-```
-backToTopButton.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-```
-
-}
-
-/* === 8️⃣ COOKIE CONSENT === */
-const cookieBanner = document.getElementById('cookie-banner');
-const acceptCookies = document.getElementById('accept-cookies');
-if (cookieBanner && acceptCookies) {
-if (!localStorage.getItem('cookiesAccepted')) {
-cookieBanner.style.display = 'block';
-}
-
-```
-acceptCookies.addEventListener('click', () => {
-  cookieBanner.style.display = 'none';
-  localStorage.setItem('cookiesAccepted', 'true');
-});
-```
-
-}
+faders.forEach(fader => appearOnScroll.observe(fader));
 });
