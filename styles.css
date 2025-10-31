@@ -33,9 +33,10 @@ scroll-behavior: smooth;
 --neutral: #f8f9fa;
 --success: #2d8659;
 --white: #ffffff;
---header-bg: #004080;
+--header-bg: #004080; /* Corporate Blue */
 --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
 --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
+--shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.18);
 --transition: all 0.3s ease-in-out;
 }
 
@@ -49,12 +50,18 @@ background: var(--header-bg);
 color: var(--white);
 z-index: 1000;
 box-shadow: var(--shadow-sm);
-transition: background 0.4s ease, transform 0.3s ease;
+transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
 }
 
+/* Transparent blue when scrolled */
 #main-header.scrolled {
 background: rgba(0, 64, 128, 0.9);
 backdrop-filter: blur(8px);
+}
+
+/* Auto-hide header on scroll down */
+#main-header.header-hidden {
+transform: translateY(-100%);
 }
 
 /* NAVIGATION LAYOUT */
@@ -77,7 +84,7 @@ color: var(--white);
 /* NAV LINKS */
 .nav-links {
 display: flex;
-gap: 3rem; /* Increased spacing between nav items */
+gap: 2.5rem; /* Increased spacing between menu items */
 align-items: center;
 }
 
@@ -85,27 +92,41 @@ align-items: center;
 color: var(--white);
 text-decoration: none;
 font-weight: 500;
-font-size: 1rem;
+font-size: 0.95rem;
 position: relative;
-padding-bottom: 4px;
-transition: color 0.2s ease;
+padding-bottom: 6px;
+transition: color 0.25s ease;
 }
 
-.nav-links a:hover {
-color: #dce6f7;
-}
-
-/* ACTIVE LINK UNDERLINE */
-.nav-links a.active::after {
+/* === UNDERLINE EFFECT === */
+.nav-links a::after {
 content: "";
 position: absolute;
 bottom: 0;
 left: 20%;
-width: 60%;
+width: 0%;
 height: 2px;
-background-color: #fff;
+background-color: #dce6f7;
 border-radius: 2px;
-transition: none; /* instant appearance */
+transition: width 0.25s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Hover state — underline grows in */
+.nav-links a:hover::after {
+width: 60%;
+background-color: #ffffff;
+}
+
+/* Active link — always visible underline */
+.nav-links a.active::after {
+width: 60%;
+background-color: #ffffff;
+}
+
+/* Smooth color transition on hover */
+.nav-links a:hover {
+color: #ffffff;
+text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
 /* === MOBILE MENU TOGGLE === */
@@ -125,12 +146,6 @@ transition: var(--transition);
 }
 
 /* === RESPONSIVE MENU === */
-@media (max-width: 1024px) {
-.nav-links {
-gap: 2rem;
-}
-}
-
 @media (max-width: 768px) {
 .nav-links {
 position: absolute;
@@ -139,20 +154,33 @@ right: 0;
 background: rgba(0, 64, 128, 0.97);
 flex-direction: column;
 align-items: flex-start;
-width: 240px;
-padding: 1.2rem;
+width: 260px;
+padding: 1.5rem;
+gap: 1rem;
 box-shadow: var(--shadow-md);
+border-left: 1px solid rgba(255, 255, 255, 0.1);
 transform: translateX(100%);
 opacity: 0;
 visibility: hidden;
 transition: transform 0.3s ease, opacity 0.3s ease;
-gap: 1.2rem; /* reduced gap on mobile */
 }
 
 .nav-links.open {
 transform: translateX(0);
 opacity: 1;
 visibility: visible;
+}
+
+/* Mobile link hover and active underline */
+.nav-links a::after {
+left: 0;
+width: 0%;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+width: 40%;
+background-color: #ffffff;
 }
 
 #menu-toggle {
@@ -174,8 +202,20 @@ max-width: 1200px;
 margin: 0 auto;
 }
 
-/* === AUTO-HIDE HEADER ON SCROLL === */
+/* === AUTO-HIDE HEADER TRANSITION === */
 .header-hidden {
 transform: translateY(-100%);
 transition: transform 0.4s ease;
+}
+
+/* === MICRO ANIMATIONS === */
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
 }
