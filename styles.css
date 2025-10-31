@@ -7,6 +7,25 @@
   margin: 0;
   padding: 0;
   }
+/* === FIX: Allow full page scroll and visible sections === */
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* === FIX: Space for Fixed Header === */
+body {
+  padding-top: 80px; /* same or slightly more than header height */
+}
+
+/* Ensure all main sections show properly */
+main, section {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
 
 /* 2️⃣ ROOT VARIABLES */
 :root {
@@ -302,4 +321,5 @@ visibility: visible;
 display: flex;
 }
 }
+
 
