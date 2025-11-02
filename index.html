@@ -1,245 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kumar Abhinav — Product Portfolio</title>
-
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Main stylesheet -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kumar Abhinav | Product Leader Portfolio</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- EmailJS library (needed for contact form) -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
+
 <body>
-
   <!-- HEADER -->
-  <header id="main-header" class="site-header">
-    <div class="navbar container">
-      <div class="logo">Kumar Abhinav</div>
-
-      <nav class="nav">
-        <button id="menu-toggle" aria-expanded="false" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-
-        <ul class="nav-links" id="nav-links">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#certifications" class="nav-link">Certifications</a></li>
-          <li><a href="#career" class="nav-link">Career</a></li>
-          <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
-          <li><a href="#publications" class="nav-link">Publications</a></li>
-          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
+  <header id="main-header">
+    <div class="container header-container">
+      <h1 class="logo">Kumar Abhinav</h1>
+      <nav class="nav-links">
+        <a href="#about" class="nav-link active">About</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#career" class="nav-link">Career</a>
+        <a href="#case-studies" class="nav-link">Case Studies</a>
+        <a href="#publications" class="nav-link">Publications</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero" id="home" aria-label="Hero">
-      <div class="hero-inner container">
-        <div class="hero-left">
-          <h1 class="hero-title">Transforming Product Visions into Market Success</h1>
-          <p class="hero-sub">20+ Years of Global Product Leadership — Delivering <strong>$500M+</strong> Impact</p>
-          <p class="hero-lead">Driving end-to-end product innovation across continents — integrating strategy, design, and execution.</p>
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h2>Transforming Product Visions into Market Success</h2>
+        <p class="hero-subtitle">20+ Years of Global Product Leadership — Delivering $500M+ Impact</p>
+        <p class="hero-description">
+          Driving end-to-end product innovation across continents — integrating strategy, design, and execution.
+        </p>
 
-          <ul class="metrics">
-            <li>
-              <span class="metric-num count" data-target="20">0</span>
-              <span class="metric-label">Years Leadership</span>
-            </li>
-            <li>
-              <span class="metric-num count" data-target="500">0</span>
-              <span class="metric-label">Revenue Impact (USD) <small> (M+)</small></span>
-            </li>
-            <li>
-              <span class="metric-num count" data-target="9">0</span>
-              <span class="metric-label">Products Delivered</span>
-            </li>
-          </ul>
-
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="#portfolio">View My Work</a>
-            <a class="btn btn-outline" href="#contact">Get in Touch</a>
-          </div>
+        <div class="hero-stats">
+          <div><span class="stat-number">20+</span><span class="stat-label">Years Leadership</span></div>
+          <div><span class="stat-number">500M+</span><span class="stat-label">Revenue Impact (USD)</span></div>
+          <div><span class="stat-number">9</span><span class="stat-label">Products Delivered</span></div>
         </div>
 
-        <div class="hero-right">
-          <div class="portrait-wrap">
-           <img src="./passport.jpg" alt="Kumar Abhinav" class="hero-photo" loading="lazy">
-
-          </div>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn primary-btn">View My Work</a>
+          <a href="#contact" class="btn outline-btn">Get in Touch</a>
         </div>
       </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section container">
-      <h2 class="section-title">About Me</h2>
-      <div class="section-content">
-        <p>I am a product management professional with close to 21 years of experience delivering hardware and software solutions across Asia, Europe, and North America. I specialize in end-to-end product leadership — from strategy and design through to market execution and scale.</p>
-        <p>I have led development of nine integrated solutions (hardware + software) that together generated revenues exceeding $100M USD and earned multiple Red Dot Design Awards. I’m looking for roles where I can drive product strategy, scale teams and deliver measurable business results.</p>
+      <div class="hero-photo-container">
+        <img src="./passport.jpg" alt="Kumar Abhinav" class="hero-photo" loading="lazy">
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="section container">
-      <h2 class="section-title">Product Portfolio</h2>
-      <div class="cards-grid">
-        <article class="card">
-          <h3>IoT Industrial Visualization</h3>
-          <p>Unified visualization & SCADA integration for refinery operations (scalable, real-time).</p>
-        </article>
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I am a product management professional with over 20 years of experience delivering hardware and software
+        solutions across Asia, Europe, and North America. I specialize in end-to-end product leadership — from
+        strategy and design through to market execution and scale.
+      </p>
+      <p>
+        I have led the development of nine integrated solutions (hardware + software) generating revenues exceeding
+        $100M USD and earning multiple Red Dot Design Awards. I’m looking for roles where I can drive product
+        strategy, scale teams, and deliver measurable business results.
+      </p>
+    </div>
+  </section>
 
-        <article class="card">
-          <h3>National Health Digital Platform</h3>
-          <p>Delivered multi-module digital health platform for national rollout.</p>
-        </article>
-
-        <article class="card">
-          <h3>Broadcast Video Wall</h3>
-          <p>Design & deployment of large-scale newsroom video wall (132 displays).</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section container">
-      <h2 class="section-title">Skills</h2>
-      <div class="skill-pills">
-        <span class="pill">Product Strategy</span>
-        <span class="pill">Go-to-Market</span>
-        <span class="pill">Product-Led Growth</span>
-        <span class="pill">Hardware + Embedded</span>
-        <span class="pill">Agile & SAFe</span>
-        <span class="pill">Stakeholder Management</span>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="section container">
-      <h2 class="section-title">Certifications</h2>
-      <div class="cards-grid">
-        <article class="card card-featured">
-          <h3>Google Project Management</h3>
-          <p class="muted">Aug 2020</p>
-        </article>
-        <article class="card">
-          <h3>AI & Prompt Engineering</h3>
-          <p class="muted">2024</p>
-        </article>
-        <article class="card">
-          <h3>Lead Auditor ISO 27001</h3>
-          <p class="muted">2021</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CAREER -->
-    <section id="career" class="section container">
-      <h2 class="section-title">Career</h2>
-      <ol>
-        <li><strong>2020–2025</strong> — Senior Product Leader, Multinational</li>
-        <li><strong>2015–2020</strong> — Head of Product, Global OEM</li>
-        <li><strong>2006–2015</strong> — Product & Program Management roles</li>
-      </ol>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section id="case-studies" class="section container">
-      <h2 class="section-title">Case Studies</h2>
-      <div class="cards-grid">
-        <article class="card card-accent">
-          <h3>Ayushman Bharat Digital Mission (Sample)</h3>
-          <p>Directed product strategy and delivery of national health modules with time-critical launch readiness.</p>
-        </article>
-        <article class="card">
-          <h3>IOCL Visualization</h3>
-          <p>Real-time visualization and monitoring for refinery control rooms.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="section container">
-      <h2 class="section-title">Publications</h2>
-      <p>Selected thought leadership — whitepapers and articles on product strategy and digital transformation.</p>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="section container">
-      <h2 class="section-title">Testimonials</h2>
-      <div class="card card-testimonial">
-        <blockquote>
-          “Kumar led our product to market with clarity and measurable results.”
-          <cite>— CEO, Global OEM</cite>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section container contact-section">
-      <div class="contact-grid">
-        <div>
-          <h2 class="section-title">Contact</h2>
-          <p><strong>Email:</strong> <a href="mailto:kumarforpm@outlook.com">kumarforpm@outlook.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+919811873286">+91 9811 87 3286</a></p>
-          <p><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">View Profile</a></p>
-        </div>
-
-        <form id="contact-form" class="contact-form" enctype="multipart/form-data" novalidate>
-          <div id="form-status" class="form-status" aria-live="polite"></div>
-
-          <label>
-            Name
-            <input type="text" name="name" required>
-          </label>
-
-          <label>
-            Email
-            <input type="email" name="email" required>
-          </label>
-
-          <label>
-            Phone
-            <input type="tel" name="phone">
-          </label>
-
-          <label>
-            Message
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-
-          <label class="file-label">
-            Attachment (optional, max 5MB: .jpeg .pdf .docx)
-            <input type="file" name="attachment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
-          </label>
-
-          <label class="consent">
-            <input type="checkbox" id="consent" required> I consent to my data being stored and processed per GDPR.
-          </label>
-
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Send Message</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <footer class="site-footer container">
-      <p>© 2025 Kumar Abhinav. All rights reserved.</p>
-    </footer>
-  </main>
-
-  <!-- Main script -->
-  <script src="script.js" defer></script>
 </body>
 </html>
-
