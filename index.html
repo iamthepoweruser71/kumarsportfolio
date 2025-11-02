@@ -1,108 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kumar Abhinav | Product Leader Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header id="main-header">
-      <div class="container header-container">
-        <h1 class="logo">Kumar Abhinav</h1>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#career">Career</a></li>
-            <li><a href="#case-studies">Case Studies</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kumar Abhinav — Product Leader</title>
 
-    <section class="hero">
-      <div class="container hero-container">
-        <div class="hero-left">
-          <div class="profile-img">
-            <img src="passport.jpg" alt="Kumar Abhinav" />
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- EmailJS (browser) - required for contact form -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body class="page-preload">
+  <!-- ===========================
+       HEADER / NAV
+       =========================== -->
+  <header id="main-header" class="header">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <a href="#top" class="logo">Kumar Abhinav</a>
+      </div>
+
+      <button id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about" data-target="about">About</a></li>
+          <li><a href="#portfolio" data-target="portfolio">Portfolio</a></li>
+          <li><a href="#skills" data-target="skills">Skills</a></li>
+          <li><a href="#certifications" data-target="certifications">Certifications</a></li>
+          <li><a href="#career" data-target="career">Career</a></li>
+          <li><a href="#case-studies" data-target="case-studies">Case Studies</a></li>
+          <li><a href="#publications" data-target="publications">Publications</a></li>
+          <li><a href="#work-samples" data-target="work-samples">Work Samples</a></li>
+          <li><a href="#testimonials" data-target="testimonials">Testimonials</a></li>
+          <li><a href="#contact" data-target="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===========================
+       HERO / STRATEGIC DASHBOARD
+       =========================== -->
+  <main id="top">
+    <section class="hero section" id="hero">
+      <div class="container hero-grid">
+        <!-- left: profile image -->
+        <div class="hero-col hero-photo animate-on-scroll">
+          <!-- ensure passport.jpg or passport.png is uploaded to repo root -->
+          <div class="photo-frame">
+            <img src="passport.jpg" alt="Kumar Abhinav — Product Leader" id="profile-photo" />
           </div>
         </div>
 
-        <div class="hero-right">
-          <h2>Transforming Product Visions into Market Success</h2>
-          <p class="hero-subtitle">
-            20+ Years of Global Product Leadership — Delivering $500M+ Impact
-          </p>
-          <p class="hero-text">
-            Driving end-to-end product innovation across continents — integrating
-            strategy, design, and execution.
+        <!-- right: text + metrics -->
+        <div class="hero-col hero-content animate-on-scroll">
+          <h1 class="hero-title">Transforming Product Visions into Market Success</h1>
+
+          <p class="hero-sub">
+            20+ Years of Global Product Leadership — Transforming ideas into market-scale products and delivering measurable outcomes worth <strong>$500M+</strong>.
           </p>
 
-          <div class="hero-stats">
-            <div>
-              <strong>20+</strong>
+          <p class="hero-lead">
+            I lead end-to-end product initiatives (hardware & software) across Asia, Europe, and North America — launching award-winning solutions and scaling teams to deliver commercial impact.
+          </p>
+
+          <div class="hero-stats" id="hero-stats">
+            <div class="stat">
+              <strong class="count" data-target="20">0</strong>
               <span>Years Leadership</span>
             </div>
-            <div>
-              <strong>500M+</strong>
-              <span>Revenue Impact (USD)</span>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <div class="stat">
+              <strong class="count" data-target="500">0</strong>
+              <span>Revenue Impact (USD, M)</span>
             </div>
-            <div>
-              <strong>9</strong>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <div class="stat">
+              <strong class="count" data-target="9">0</strong>
               <span>Products Delivered</span>
             </div>
           </div>
 
-          <div class="hero-buttons">
-            <a href="#portfolio" class="btn primary">View My Work</a>
-            <a href="#contact" class="btn secondary">Get in Touch</a>
+          <div class="hero-ctas animate-on-scroll">
+            <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
+            <a class="btn btn-outline" href="#contact">Contact Me</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="about-section">
+    <!-- ===========================
+         ABOUT
+         =========================== -->
+    <section id="about" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>About Me</h2>
         <p>
-          I am a product management professional with 20+ years of experience delivering hardware
-          and software solutions across Asia, Europe, and North America. I specialize in
-          end-to-end product leadership — from strategy and design through to market
-          execution and scale.
-        </p>
-        <p>
-          I have led the development of nine integrated solutions (hardware + software)
-          generating revenues exceeding $500M USD and earning multiple Red Dot Design Awards.
-          I’m looking for roles where I can drive product strategy, scale teams, and deliver measurable
-          business results.
+          I am a product management professional with 20+ years of experience delivering hardware and software solutions across Asia, Europe, and North America.
+          My strengths are in end-to-end product strategy, design-led delivery and commercial scaling. I have led development of 9 integrated solutions generating revenues above $500M USD and have won design awards such as Red Dot.
         </p>
       </div>
     </section>
 
-    <section id="portfolio" class="section">
+    <!-- ===========================
+         PORTFOLIO (placeholder)
+         =========================== -->
+    <section id="portfolio" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>Portfolio</h2>
+        <p>Placeholder — we will populate with your case studies, images and project cards.</p>
       </div>
     </section>
 
-    <section id="skills" class="section">
+    <!-- SKILLS -->
+    <section id="skills" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>Skills</h2>
       </div>
     </section>
 
-    <section id="certifications" class="section">
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>Certifications</h2>
       </div>
     </section>
 
-    <script src="script.js"></script>
-  </body>
+    <!-- CAREER -->
+    <section id="career" class="section section-panel animate-on-scroll">
+      <div class="container">
+        <h2>Career</h2>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="case-studies" class="section section-panel animate-on-scroll">
+      <div class="container">
+        <h2>Case Studies</h2>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications" class="section section-panel animate-on-scroll">
+      <div class="container">
+        <h2>Publications</h2>
+      </div>
+    </section>
+
+    <!-- WORK SAMPLES -->
+    <section id="work-samples" class="section section-panel animate-on-scroll">
+      <div class="container">
+        <h2>Work Samples</h2>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="section section-panel animate-on-scroll">
+      <div class="container">
+        <h2>Testimonials</h2>
+      </div>
+    </section>
+
+    <!-- ===========================
+         CONTACT (with EmailJS)
+         =========================== -->
+    <section id="contact" class="section section-panel animate-on-scroll">
+      <div class="container">
+        <h2>Contact</h2>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:kumarforpm@outlook.com">kumarforpm@outlook.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919811873286">+91 9811 87 3286</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kumar-28a59b2ba/" target="_blank" rel="noopener">View Profile</a></p>
+          </div>
+
+          <form id="contact-form" class="contact-form" novalidate>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <label for="attachment">Attachment (optional, max 5 MB — .jpeg, .pdf, .docx)</label>
+            <input id="attachment" name="attachment" type="file" accept=".jpeg,.jpg,.pdf,.docx" />
+
+            <label class="consent"><input id="consent" type="checkbox" required /> I consent to my data being stored and processed (GDPR).</label>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+
+            <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- COOKIE BANNER (minimal) -->
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
+    <div class="container">
+      <span>This site uses cookies to ensure the best experience. <a href="#privacy">Learn more</a></span>
+      <button id="accept-cookies" class="btn btn-outline">Accept</button>
+    </div>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
+
+  <!-- project script -->
+  <script src="script.js"></script>
+</body>
 </html>
