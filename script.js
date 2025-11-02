@@ -1,27 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Shrink header on scroll
+window.addEventListener("scroll", () => {
   const header = document.getElementById("main-header");
-  const fadeElements = document.querySelectorAll(".fade-in");
+  if (window.scrollY > 50) {
+    header.classList.add("shrink");
+  } else {
+    header.classList.remove("shrink");
+  }
+});
 
-  // Shrink header on scroll
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      header.classList.add("shrink");
-    } else {
-      header.classList.remove("shrink");
-    }
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth",
+    });
   });
-
-  // Fade-in animation on scroll
-  const fadeObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  fadeElements.forEach((el) => fadeObserver.observe(el));
 });
