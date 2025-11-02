@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("main-header");
   const navLinks = document.querySelectorAll(".nav-links a");
   const sections = document.querySelectorAll("section");
+  const progressBar = document.getElementById("progress-bar");
 
   // === HEADER BEHAVIOR ===
   window.addEventListener("scroll", () => {
@@ -22,9 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
       }
     });
+
+    // Progress Bar
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + "%";
   });
 
-  // === SMOOTH SCROLL on CLICK ===
+  // === SMOOTH SCROLL ===
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
