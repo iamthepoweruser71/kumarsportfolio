@@ -22,6 +22,18 @@ body {
   margin: auto;
 }
 
+/* === SCROLL PROGRESS BAR === */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #007bff;
+  width: 0%;
+  z-index: 2000;
+  transition: width 0.25s ease-out;
+}
+
 /* === HEADER === */
 header {
   position: fixed;
@@ -106,7 +118,7 @@ header.scrolled {
 .hero-image img {
   width: 240px;
   height: 240px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   border: 5px solid #fff;
@@ -186,6 +198,10 @@ header.scrolled {
 /* === SECTION DEFAULTS === */
 section {
   padding: 5rem 0;
+}
+
+.placeholder {
+  min-height: 100vh; /* Ensures scroll works */
 }
 
 .about h2,
