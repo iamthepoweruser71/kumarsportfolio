@@ -1,7 +1,9 @@
-// Basic smooth scrolling and active link highlight
+// ===== Smooth Scrolling + Active Links + Animations =====
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-links a");
+  const header = document.getElementById("main-header");
 
+  // Smooth scroll
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -12,21 +14,28 @@ document.addEventListener("DOMContentLoaded", () => {
           behavior: "smooth",
         });
       }
-
       navLinks.forEach((lnk) => lnk.classList.remove("active"));
       link.classList.add("active");
     });
   });
 
-  // Header transparency on scroll
-  const header = document.getElementById("main-header");
+  // Header shrink on scroll
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 80) {
-      header.style.background = "rgba(0, 60, 136, 0.9)";
-      header.style.backdropFilter = "blur(4px)";
-    } else {
-      header.style.background = "#003c88";
-      header.style.backdropFilter = "none";
-    }
+    if (window.scrollY > 80) header.classList.add("shrink");
+    else header.classList.remove("shrink");
   });
+
+  // Fade-in + slide-in animations
+  const fadeElements = document.querySelectorAll(".fade-in, .slide-in-left, .slide-in-right");
+
+  const revealOnScroll = () => {
+    const trigger = window.innerHeight * 0.85;
+    fadeElements.forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      if (top < trigger) el.classList.add("visible");
+    });
+  };
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll(); // Initial check
 });
