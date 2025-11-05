@@ -1,210 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kumar Abhinav — Product Leader</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kumar Abhinav — Product Leader</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <!-- Main stylesheet: keep the name exactly "style.css" -->
-  <link rel="stylesheet" href="style.css" />
+  <body>
+    <header id="main-header" class="header">
+      <div class="container nav-wrap">
+        <a href="#top" class="logo">Kumar Abhinav</a>
+        <nav class="nav">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <!-- EmailJS (browser) -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-</head>
-
-<body class="page-preload">
-  <!-- ===================== HEADER / NAV ===================== -->
-  <header id="main-header" class="header">
-    <div class="container nav-wrap">
-      <a href="#top" class="logo">Kumar Abhinav</a>
-
-      <button id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav">
-        <ul class="nav-links" id="nav-links">
-          <li><a href="#about" data-target="about">About</a></li>
-          <li><a href="#portfolio" data-target="portfolio">Portfolio</a></li>
-          <li><a href="#skills" data-target="skills">Skills</a></li>
-          <li><a href="#certifications" data-target="certifications">Certifications</a></li>
-          <li><a href="#career" data-target="career">Career</a></li>
-          <li><a href="#case-studies" data-target="case-studies">Case Studies</a></li>
-          <li><a href="#publications" data-target="publications">Publications</a></li>
-          <li><a href="#work-samples" data-target="work-samples">Work Samples</a></li>
-          <li><a href="#testimonials" data-target="testimonials">Testimonials</a></li>
-          <li><a href="#contact" data-target="contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ===================== MAIN ===================== -->
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero section" id="hero">
-      <div class="container hero-grid">
-        <!-- left: profile image -->
-        <div class="hero-col hero-photo animate-on-scroll">
-          <!-- Ensure a file named "passport.jpg" exists at repo root -->
-          <div class="photo-frame">
-            <img src="passport.jpg" alt="Kumar Abhinav — Product Leader" id="profile-photo" />
+    <main id="top">
+      <section class="hero section" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-photo">
+            <img src="passport.jpg" alt="Kumar Abhinav" />
+          </div>
+          <div class="hero-content">
+            <h1>Transforming Product Visions into Market Success</h1>
+            <p>20+ Years of Global Product Leadership — Delivering $500M+ Impact</p>
           </div>
         </div>
+      </section>
 
-        <!-- right: text + stats -->
-        <div class="hero-col hero-content animate-on-scroll">
-          <h1 class="hero-title">Transforming Product Visions into Market Success</h1>
-          <p class="hero-sub">
-            20+ Years of Global Product Leadership — delivering impact and market-scale outcomes worth <strong>$500M+</strong>.
+      <section id="about" class="section">
+        <div class="container">
+          <h2>About Me</h2>
+          <p>
+            Product management professional with 20+ years of experience
+            delivering hardware & software solutions globally.
           </p>
-          <p class="hero-lead">
-            I lead end-to-end product initiatives (hardware & software) across Asia, Europe, and North America — launching award-winning solutions and scaling teams to deliver commercial impact.
-          </p>
-
-          <div class="hero-stats" id="hero-stats">
-            <div class="stat">
-              <strong class="count" data-target="20">0</strong>
-              <span>Years Leadership</span>
-            </div>
-            <div class="divider" aria-hidden="true"></div>
-            <div class="stat">
-              <strong class="count" data-target="500">0</strong>
-              <span>Revenue Impact (USD, M)</span>
-            </div>
-            <div class="divider" aria-hidden="true"></div>
-            <div class="stat">
-              <strong class="count" data-target="9">0</strong>
-              <span>Products Delivered</span>
-            </div>
-          </div>
-
-          <div class="hero-ctas animate-on-scroll">
-            <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
-            <a class="btn btn-outline" href="#contact">Contact Me</a>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- ABOUT -->
-    <section id="about" class="section section-panel animate-on-scroll">
+    <footer class="footer">
       <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I am a product management professional with 20+ years of experience delivering hardware and software solutions across Asia, Europe, and North America. My strengths are in end-to-end product strategy, design-led delivery and commercial scaling. I have led development of 9 integrated solutions generating revenues above $500M USD and have won design awards such as Red Dot.
-        </p>
+        <p>© 2025 Kumar Abhinav. All rights reserved.</p>
       </div>
-    </section>
+    </footer>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Portfolio</h2>
-        <p>We’ll add structured project cards and visuals next.</p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Skills</h2>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Certifications</h2>
-      </div>
-    </section>
-
-    <!-- CAREER -->
-    <section id="career" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Career</h2>
-      </div>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section id="case-studies" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Case Studies</h2>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Publications</h2>
-      </div>
-    </section>
-
-    <!-- WORK SAMPLES -->
-    <section id="work-samples" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Work Samples</h2>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Testimonials</h2>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section section-panel animate-on-scroll">
-      <div class="container">
-        <h2>Contact</h2>
-
-        <div class="contact-grid">
-          <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:kumarforpm@outlook.com">kumarforpm@outlook.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+919811873286">+91 9811 87 3286</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kumar-28a59b2ba/" target="_blank" rel="noopener">View Profile</a></p>
-          </div>
-
-          <form id="contact-form" class="contact-form" novalidate>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required />
-
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-
-            <label for="attachment">Attachment (optional, max 5 MB — .jpeg, .pdf, .docx)</label>
-            <input id="attachment" name="attachment" type="file" accept=".jpeg,.jpg,.pdf,.docx" />
-
-            <label class="consent"><input id="consent" type="checkbox" required /> I consent to my data being stored and processed (GDPR).</label>
-
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- COOKIE BANNER -->
-  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
-    <div class="container">
-      <span>This site uses cookies to ensure the best experience. <a href="#privacy">Learn more</a></span>
-      <button id="accept-cookies" class="btn btn-outline">Accept</button>
-    </div>
-  </div>
-
-  <!-- BACK TO TOP -->
-  <button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
-
-  <!-- App script -->
- <!-- <script src="script.js"></script>-->
-</body>
+    <script>
+      console.log("HTML loaded successfully.");
+    </script>
+  </body>
 </html>
-
