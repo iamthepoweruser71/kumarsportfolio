@@ -5,22 +5,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kumar Abhinav — Product Leader</title>
 
-  <!-- main stylesheet -->
+  <!-- Main stylesheet: keep the name exactly "style.css" -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- EmailJS (browser) - required for contact form -->
+  <!-- EmailJS (browser) -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body class="page-preload">
-  <!-- ===========================
-       HEADER / NAV
-       =========================== -->
+  <!-- ===================== HEADER / NAV ===================== -->
   <header id="main-header" class="header">
     <div class="container nav-wrap">
-      <div class="brand">
-        <a href="#top" class="logo">Kumar Abhinav</a>
-      </div>
+      <a href="#top" class="logo">Kumar Abhinav</a>
 
       <button id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -43,28 +39,25 @@
     </div>
   </header>
 
-  <!-- ===========================
-       HERO / STRATEGIC DASHBOARD
-       =========================== -->
+  <!-- ===================== MAIN ===================== -->
   <main id="top">
+    <!-- HERO -->
     <section class="hero section" id="hero">
       <div class="container hero-grid">
         <!-- left: profile image -->
         <div class="hero-col hero-photo animate-on-scroll">
-          <!-- ensure passport.jpg or passport.png is uploaded to repo root -->
+          <!-- Ensure a file named "passport.jpg" exists at repo root -->
           <div class="photo-frame">
             <img src="passport.jpg" alt="Kumar Abhinav — Product Leader" id="profile-photo" />
           </div>
         </div>
 
-        <!-- right: text + metrics -->
+        <!-- right: text + stats -->
         <div class="hero-col hero-content animate-on-scroll">
           <h1 class="hero-title">Transforming Product Visions into Market Success</h1>
-
           <p class="hero-sub">
-            20+ Years of Global Product Leadership — Transforming ideas into market-scale products and delivering measurable outcomes worth <strong>$500M+</strong>.
+            20+ Years of Global Product Leadership — delivering impact and market-scale outcomes worth <strong>$500M+</strong>.
           </p>
-
           <p class="hero-lead">
             I lead end-to-end product initiatives (hardware & software) across Asia, Europe, and North America — launching award-winning solutions and scaling teams to deliver commercial impact.
           </p>
@@ -74,16 +67,12 @@
               <strong class="count" data-target="20">0</strong>
               <span>Years Leadership</span>
             </div>
-
             <div class="divider" aria-hidden="true"></div>
-
             <div class="stat">
               <strong class="count" data-target="500">0</strong>
               <span>Revenue Impact (USD, M)</span>
             </div>
-
             <div class="divider" aria-hidden="true"></div>
-
             <div class="stat">
               <strong class="count" data-target="9">0</strong>
               <span>Products Delivered</span>
@@ -98,26 +87,21 @@
       </div>
     </section>
 
-    <!-- ===========================
-         ABOUT
-         =========================== -->
+    <!-- ABOUT -->
     <section id="about" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>About Me</h2>
         <p>
-          I am a product management professional with 20+ years of experience delivering hardware and software solutions across Asia, Europe, and North America.
-          My strengths are in end-to-end product strategy, design-led delivery and commercial scaling. I have led development of 9 integrated solutions generating revenues above $500M USD and have won design awards such as Red Dot.
+          I am a product management professional with 20+ years of experience delivering hardware and software solutions across Asia, Europe, and North America. My strengths are in end-to-end product strategy, design-led delivery and commercial scaling. I have led development of 9 integrated solutions generating revenues above $500M USD and have won design awards such as Red Dot.
         </p>
       </div>
     </section>
 
-    <!-- ===========================
-         PORTFOLIO (placeholder)
-         =========================== -->
+    <!-- PORTFOLIO -->
     <section id="portfolio" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>Portfolio</h2>
-        <p>Placeholder — we will populate with your case studies, images and project cards.</p>
+        <p>We’ll add structured project cards and visuals next.</p>
       </div>
     </section>
 
@@ -170,9 +154,7 @@
       </div>
     </section>
 
-    <!-- ===========================
-         CONTACT (with EmailJS)
-         =========================== -->
+    <!-- CONTACT -->
     <section id="contact" class="section section-panel animate-on-scroll">
       <div class="container">
         <h2>Contact</h2>
@@ -203,7 +185,6 @@
             <label class="consent"><input id="consent" type="checkbox" required /> I consent to my data being stored and processed (GDPR).</label>
 
             <button type="submit" class="btn btn-primary">Send Message</button>
-
             <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
           </form>
         </div>
@@ -211,7 +192,7 @@
     </section>
   </main>
 
-  <!-- COOKIE BANNER (minimal) -->
+  <!-- COOKIE BANNER -->
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
     <div class="container">
       <span>This site uses cookies to ensure the best experience. <a href="#privacy">Learn more</a></span>
@@ -222,7 +203,7 @@
   <!-- BACK TO TOP -->
   <button id="back-to-top" title="Back to top" aria-label="Back to top">↑</button>
 
-  <!-- project script -->
+  <!-- App script -->
   <script src="script.js"></script>
 </body>
 </html>
