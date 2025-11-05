@@ -1,4 +1,3 @@
-// ===== Smooth Scrolling + Active Links + Animations =====
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-links a");
   const header = document.getElementById("main-header");
@@ -25,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     else header.classList.remove("shrink");
   });
 
-  // Fade-in + slide-in animations
-  const fadeElements = document.querySelectorAll(".fade-in, .slide-in-left, .slide-in-right");
-
+  // Fade-in animations
+  const fadeElements = document.querySelectorAll(".fade-in");
   const revealOnScroll = () => {
     const trigger = window.innerHeight * 0.85;
     fadeElements.forEach((el) => {
@@ -35,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (top < trigger) el.classList.add("visible");
     });
   };
-
   window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); // Initial check
+  revealOnScroll();
 });
