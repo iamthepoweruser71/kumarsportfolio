@@ -24,15 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
     else header.classList.remove("shrink");
   });
 
-  // Fade-in animations
+  // Fade-in animations for sections
   const fadeElements = document.querySelectorAll(".fade-in");
+  const metricCards = document.querySelectorAll(".metric-card");
+  let metricsAnimated = false;
+
   const revealOnScroll = () => {
     const trigger = window.innerHeight * 0.85;
     fadeElements.forEach((el) => {
       const top = el.getBoundingClientRect().top;
       if (top < trigger) el.classList.add("visible");
     });
+
+    // Trigger metric animation when section visible
+    const intro = document.querySelector("#intro");
+    if (!metricsAnimated && intro.getBoundingClientRect().top < trigger) {
+      metricCards.forEach((card) => (card.style.animationPlayState = "running"));
+      metricsAnimated = true;
+    }
   };
+
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll();
 });
