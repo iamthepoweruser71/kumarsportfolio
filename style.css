@@ -89,26 +89,42 @@ body {
   color: #0073e6;
   font-weight: 500;
 }
+
+/* ===== METRICS AS CARDS ===== */
 .metrics-wide {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
-.metric-box {
+.metric-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px 40px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 240px;
   text-align: center;
+}
+.metric-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 .metric-value {
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #003c88;
   font-weight: 700;
+}
+.metric-label {
+  color: #555;
+  font-size: 0.95rem;
 }
 
 /* ===== ABOUT ===== */
 .about-grid {
   display: flex;
-  align-items: center; /* vertical centering */
+  align-items: center;
   justify-content: space-between;
   gap: 3rem;
   margin-top: 60px;
