@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-links a");
   const header = document.getElementById("main-header");
 
-  // Smooth scroll
+  // Smooth scrolling
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
