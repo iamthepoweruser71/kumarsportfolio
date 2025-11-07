@@ -23,6 +23,8 @@ body {
   --bg-color: #f6f9fc;
   --text-color: #0a2342;
   --accent: #0073e6;
+  --header-bg: #003c88;
+  --header-text: #ffffff;
   --glow-color: #0073e6;
   --glow-shadow: rgba(0, 115, 230, 0.4);
 }
@@ -30,6 +32,8 @@ body.dark-mode {
   --bg-color: #0f172a;
   --text-color: #f1f5f9;
   --accent: #60a5fa;
+  --header-bg: rgba(20, 25, 35, 0.9);
+  --header-text: #ffffff;
   --glow-color: #ffffff;
   --glow-shadow: rgba(255, 255, 255, 0.4);
 }
@@ -39,12 +43,14 @@ body.dark-mode {
   position: fixed;
   top: 0;
   width: 100%;
-  background: #003c88;
+  background: var(--header-bg);
+  color: var(--header-text);
   padding: 15px 0;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 .nav-wrap {
   display: flex;
@@ -54,7 +60,7 @@ body.dark-mode {
   margin: 0 auto;
 }
 .logo {
-  color: #fff;
+  color: var(--header-text);
   font-weight: 600;
   text-decoration: none;
   font-size: 1.1rem;
@@ -65,7 +71,7 @@ body.dark-mode {
   gap: 1.3rem;
 }
 .nav-links a {
-  color: #fff;
+  color: var(--header-text);
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -89,7 +95,7 @@ body.dark-mode {
 #theme-toggle {
   background: none;
   border: 1px solid #ffffff55;
-  color: #fff;
+  color: var(--header-text);
   font-size: 1.2rem;
   cursor: pointer;
   border-radius: 50%;
@@ -146,15 +152,6 @@ body.dark-mode {
   border: 2px solid transparent;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.4s ease;
 }
-.metric-card:nth-child(1) {
-  animation-delay: 0.2s;
-}
-.metric-card:nth-child(2) {
-  animation-delay: 0.5s;
-}
-.metric-card:nth-child(3) {
-  animation-delay: 0.8s;
-}
 .metric-card:hover {
   transform: translateY(-6px);
   border: 2px solid var(--glow-color);
@@ -169,18 +166,6 @@ body.dark-mode {
 .metric-label {
   color: var(--text-color);
   font-size: 0.95rem;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes metricFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ===== ABOUT ===== */
