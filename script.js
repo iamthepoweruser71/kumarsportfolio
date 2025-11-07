@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-links a");
   const header = document.getElementById("main-header");
+  const metricCards = document.querySelectorAll(".metric-card");
+  let metricsAnimated = false;
 
   // Smooth scrolling
   navLinks.forEach((link) => {
@@ -24,10 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     else header.classList.remove("shrink");
   });
 
-  // Fade-in animations for sections
+  // Fade-in and metric animation
   const fadeElements = document.querySelectorAll(".fade-in");
-  const metricCards = document.querySelectorAll(".metric-card");
-  let metricsAnimated = false;
 
   const revealOnScroll = () => {
     const trigger = window.innerHeight * 0.85;
@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (top < trigger) el.classList.add("visible");
     });
 
-    // Trigger metric animation when section visible
     const intro = document.querySelector("#intro");
     if (!metricsAnimated && intro.getBoundingClientRect().top < trigger) {
       metricCards.forEach((card) => (card.style.animationPlayState = "running"));
