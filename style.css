@@ -101,7 +101,6 @@ body {
   background: #fff;
   border-radius: 16px;
   padding: 25px 40px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
   width: 240px;
   text-align: center;
   opacity: 0;
@@ -120,11 +119,25 @@ body {
   animation-delay: 0.8s;
 }
 
+/* Hover glow — adaptive */
 .metric-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  border: 2px solid #0073e6;
-  box-shadow: 0 0 20px rgba(0, 115, 230, 0.35);
+  border: 2px solid var(--glow-color);
+  box-shadow: 0 0 20px var(--glow-shadow);
+}
+
+/* Default light mode glow */
+:root {
+  --glow-color: #0073e6;
+  --glow-shadow: rgba(0, 115, 230, 0.4);
+}
+
+/* Dark mode adaptive glow */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glow-color: #ffffff;
+    --glow-shadow: rgba(255, 255, 255, 0.4);
+  }
 }
 
 .metric-value {
