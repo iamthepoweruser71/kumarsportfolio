@@ -107,6 +107,8 @@ body {
   opacity: 0;
   transform: translateY(40px);
   animation: metricFadeIn 0.8s ease forwards;
+  border: 2px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.4s ease;
 }
 .metric-card:nth-child(1) {
   animation-delay: 0.2s;
@@ -120,7 +122,9 @@ body {
 
 .metric-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  border: 2px solid #0073e6;
+  box-shadow: 0 0 20px rgba(0, 115, 230, 0.35);
 }
 
 .metric-value {
